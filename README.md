@@ -1,1 +1,1 @@
-# FunctionalGradients
+# Funclional gradients in MCI and AD
