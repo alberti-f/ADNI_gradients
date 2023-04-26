@@ -1,20 +1,14 @@
 #!/bin/bash
 
-subj_list= #"/path/to/subject_IDs.txt"
-subj_dir= #"/path/to/subjects/data/"
-output_dir= #"/path/to/output/directory/"
+subj_list= "/home/fralberti/Data/HCP_Lifespan/subj_IDs.txt" #"/path/to/subject_IDs.txt"
+subj_dir= "/home/fralberti/Data/HCP_Lifespan" #"/path/to/subjects/data"
+output_dir= "/home/fralberti/Data/HCP_Lifespan/Output" #"/path/to/output/directory"
 
 pip install -r requirements.txt
 
 while read subj; do
 
-    if [ ! -f "${subj_dir}/rfMRI_REST_All_Atlas_MSMAll_hp2000_clean_smth.dtseries.nii" ]; then
-        wb_command -cifti-merge "${subj_dir}/rfMRI_REST_All_Atlas_MSMAll_hp2000_clean_smth.dtseries.nii"\
-                    -cifti "${subj_dir}/${runs[0]}/${runs[0]}_Atlas_MSMAll_hp2000_clean_smth.dtseries.nii"\
-                    -cifti "${subj_dir}/${runs[1]}/${runs[1]}_Atlas_MSMAll_hp2000_clean_smth.dtseries.nii"\               
-    fi
-    
-    wb_command 
+    ./additional_preprocessing.sh ${subj} ${subj_dir} 1
 
     #python3 adjecency_matrix.py
 
