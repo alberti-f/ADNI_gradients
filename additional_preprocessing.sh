@@ -14,8 +14,7 @@ for tseries in REST${n}_AP REST${n}_PA; do
     raw="${func_dir}/rfMRI_${tseries}/rfMRI_${tseries}_Atlas_MSMAll_hp0_clean.dtseries.nii"
     smooth="${func_dir}/rfMRI_${tseries}/rfMRI_${tseries}_Atlas_MSMAll_hp0_clean_smooth.dtseries.nii"
     
-    if [ -f "${out_tseries}" ]; then
-        echo "already preprocessed"
+    if [ -f "${smooth}" ]; then
         continue
     fi
 

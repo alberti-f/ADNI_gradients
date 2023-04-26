@@ -16,7 +16,7 @@ def prep_matrix(adj_matrix):
 
 
 path = sys.argv[2]
-M = np.load(path) #np.genfromtxt(path, delimiter=",")
+M = np.load(path)
 M = prep_matrix(M)
 
 gm = GradientMaps(n_components=200, approach="dm", kernel="normalized_angle")

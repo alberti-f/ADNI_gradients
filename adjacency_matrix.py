@@ -9,9 +9,5 @@ out_matrix = sys.argv[2]
 
 smoothed_tseries = nib.load(smoothed_tseries).get_fdata()
 adjacency_matrix = np.corrcoef(smoothed_tseries.squeeze().T)
-print(adjacency_matrix.shape)
-
-adjacency_matrix[adjacency_matrix < np.percentile(adjacency_matrix, 90, axis=0)] = 0
-adjacency_matrix = 1 - pairwise_distances(adjacency_matrix, metric = 'cosine')
 
 np.save(out_matrix, adjacency_matrix)
