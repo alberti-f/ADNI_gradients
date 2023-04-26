@@ -10,12 +10,9 @@ while read subj; do
 
     echo $subj
 
-    ./additional_preprocessing.sh ${subj} ${subj_dir} 1
+    python3 adjacency_matrix.py 
 
-    python3 adjacency_matrix.py "${subj_dir}/${subj}/fmriresults01/${subj}_V1_MR/MNINonLinear/Results/rfMRI_REST1_Atlas_MSMAll_hp0_clean_smooth.dtseries.nii" \
-                                "${output_dir}/${subj}.fcMatrix.rfMRI_REST1_Atlas_MSMAll_hp0_clean"
-
-    python3 compute_gradients.py ${subj} "${output_dir}/${subj}.fcMatrix.rfMRI_REST1_Atlas_MSMAll_hp0_clean.npy" ${output_dir}
+    python3 compute_gradients.py ${subj} "${output_dir}/adjacency_matrix.npy" ${output_dir}
 
 done < ${subj_list}
 
