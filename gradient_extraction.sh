@@ -1,16 +1,17 @@
 #!/bin/bash
 
-subj_list= "/home/fralberti/Data/HCP_LifeSpan/subj_IDs.txt" #"/path/to/subject_IDs.txt"
-subj_dir= "/home/fralberti/Data/HCP_LifeSpan" #"/path/to/subjects/data"
-output_dir= "/home/fralberti/Data/HCP_Lifespan/Output" #"/path/to/output/directory"
+subj_list="/home/fralberti/Data/HCP_LifeSpan/subj_IDs.txt" #"/path/to/subject_IDs.txt"
+subj_dir="/home/fralberti/Data/HCP_LifeSpan" #"/path/to/subjects/data"
+output_dir="/home/fralberti/Data/HCP_Lifespan/Output" #"/path/to/output/directory"
 
 pip install -r requirements.txt
 
 while read subj; do
+    echo subj
 
     ./additional_preprocessing.sh ${subj} ${subj_dir} 1
 
-    #python3 adjecency_matrix.py
+    python3 adjacency_matrix.py "${subj_dir}/${subj}/MNINonLinear/Results/rfMRI_REST1_Atlas_MSMAll_hp0_clean_smooth.dtseries.nii" "${output_dir}/${subj}.fcMatrix.rfMRI_REST1_Atlas_MSMAll_hp0.csv"
 
     #python3 compute_gradients.py ${subj} "${subj_dir}/${subj}/Analysis/${subj}.rfMRI_REST1_LR.Schaefer_1000.fcMatrix.csv"  ${output_dir}
 

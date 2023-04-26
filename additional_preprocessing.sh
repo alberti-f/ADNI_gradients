@@ -11,14 +11,16 @@ struct_dir="${subj_dir}/fmriresults01/${subj}_V1_MR/T1w/fsaverage_LR32k"
 kernel=6
 for tseries in REST${n}_AP REST${n}_PA; do
 
-    raw="${func_dir}/${tseries}/rfMRI_${tseries}_Atlas_MSMAll_hp0_clean.dtseries.nii"
-    smooth="${func_dir}/${tseries}/rfMRI_${tseries}_Atlas_MSMAll_hp0_clean_smooth.dtseries.nii"
+    raw="${func_dir}/rfMRI_${tseries}/rfMRI_${tseries}_Atlas_MSMAll_hp0_clean.dtseries.nii"
+    smooth="${func_dir}/rfMRI_${tseries}/rfMRI_${tseries}_Atlas_MSMAll_hp0_clean_smooth.dtseries.nii"
     
-    if [ -f "${out_tseries}" ]; then continue
+    if [ -f "${out_tseries}" ]; then
+        continue
+    fi
 
-    wb_command  -cifti-smoothing "${raw} ${kernel} ${kernel} COLUMN ${smooth}" \
-                -left-surface "${struct_dir}/${subj}_V1.L.midthickness_MSMAll.32k_fs_LR.surf.gii" \
-                -right-surface "${struct_dir}/${subj}_V1.R.midthickness_MSMAll.32k_fs_LR.surf.gii"
+    wb_command  -cifti-smoothing "${raw}" ${kernel} ${kernel} COLUMN "${smooth}" \
+                -left-surface ${struct_dir}/${subj}_V1.L.midthickness_MSMAll.32k_fs_LR.surf.gii \
+                -right-surface ${struct_dir}/${subj}_V1.R.midthickness_MSMAll.32k_fs_LR.surf.gii
 done
 
 
