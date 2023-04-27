@@ -1,5 +1,4 @@
 # 01 - adjacency_matrix
-from sklearn.metrics import pairwise_distances
 import nibabel as nib
 import numpy as np
 import sys
