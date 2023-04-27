@@ -1,8 +1,8 @@
 #!/bin/bash
 
-subj_list="/home/fralberti/Data/HCP_LifeSpan/subj_IDs.txt" #"/path/to/subject_IDs.txt"
-subj_dir="/home/fralberti/Data/HCP_LifeSpan" #"/path/to/subjects/data"
-output_dir="/home/fralberti/Data/HCP_LifeSpan/Output" #"/path/to/output/directory"
+subj_list="/path/to/subject_IDs.txt"
+subj_dir="/path/to/subjects/data"
+output_dir="/path/to/output/directory"
 
 pip install -r requirements.txt
 
