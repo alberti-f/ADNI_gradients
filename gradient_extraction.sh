@@ -17,6 +17,8 @@ while read subj; do
 
     python3 compute_gradients.py ${subj} "${output_dir}/${subj}.fcMatrix.rfMRI_REST1_Atlas_MSMAll_hp0_clean.npy" ${output_dir}
 
+    rm "${output_dir}/${subj}.fcMatrix.rfMRI_REST1_Atlas_MSMAll_hp0_clean.npy"
+
 done < ${subj_list}
 
 python3 align_gradients.py ${subj_list} ${output_dir}
