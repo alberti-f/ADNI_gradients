@@ -15,7 +15,7 @@ for tseries in REST${n}_AP REST${n}_PA; do
     smooth="${func_dir}/rfMRI_${tseries}/rfMRI_${tseries}_Atlas_MSMAll_hp0_clean_smooth.dtseries.nii"
     
     if [ -f "${smooth}" ]; then
-        continue
+       continue
     fi
 
     wb_command  -cifti-smoothing "${raw}" ${kernel} ${kernel} COLUMN "${smooth}" \
