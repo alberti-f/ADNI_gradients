@@ -2,7 +2,7 @@
 
 import sys
 import numpy as np
-from brainspace.gradient import GradientMaps
+from mapalign.embed import compute_diffusion_map
 
 subj = sys.argv[1]
 
@@ -19,10 +19,8 @@ path = sys.argv[2]
 M = np.load(path)
 M = prep_matrix(M)
 
-gm = GradientMaps(n_components=200, approach="dm", kernel="normalized_angle")
-gm.fit(M, sparsity=0.,  n_iter=10)
+gradients = compute_diffusion_map(M, alpha = 0.5, n_components=10)
 
 output_dir = sys.argv[3]
 
-np.save(f"{output_dir}/{subj}.DM_Lambdas", gm.lambdas_)
-np.save(f"{output_dir}/{subj}.DM_Gradients", gm.gradients_)
+np.save(f"{output_dir}/{subj}.DM_Gradients", gradients)
