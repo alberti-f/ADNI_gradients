@@ -4,7 +4,7 @@ subj_list="/path/to/subject_IDs.txt"
 subj_dir="/path/to/subjects/data"
 output_dir="/path/to/output/directory"
 
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
 while read subj; do
 
