@@ -6,7 +6,7 @@ from brainspace.gradient.alignment import ProcrustesAlignment
 
 subject_IDs = sys.argv[1]
 f = open(subject_IDs, 'r')
-subject_IDs = np.array(f.read().splitlines(), dtype='int32')
+subject_IDs = np.array(f.read().splitlines())
 
 output_dir = sys.argv[2]
 
