@@ -12,9 +12,6 @@ output_dir = sys.argv[2]
 
 gradients = [np.load(f"{output_dir}/{s}.DM_Gradients.npy") for s in subject_IDs]
 
-avg_gradients = np.asarray(gradients).mean(axis=0)
-np.save(f"{output_dir}/group_avg.DM_Gradients_aligned", avg_gradients)
-
 aligner = ProcrustesAlignment()
 
 aligned_gradients = aligner.fit(gradients).aligned_
@@ -22,8 +19,11 @@ aligned_gradients = aligner.fit(gradients).aligned_
 for subject, gradient in zip(subject_IDs, aligned_gradients):
     np.save(f"{output_dir}/{subject}.DM_Gradients_aligned", gradient)
 
+avg_gradients = np.asarray(aligned_gradients).mean(axis=0)
+np.save(f"{output_dir}/group_avg.DM_Gradients_aligned", avg_gradients)
 
 import seaborn as sns
-heat_map = sns.heatmap(avg_gradients, cmap='RdBu_r', center=0)
-fig = heat_map.get_figure()
+plot = sns.scatterplot(x=avg_gradients[:,0], y=avg_gradients[:,1])
+plot.set(xlabel ="Gradient 1", ylabel = "Gradient 2", title ='Group averge gradients')
+fig = plot.get_figure()
 fig.savefig(f"{output_dir}/group_avg.DM_Gradients_aligned.png")
