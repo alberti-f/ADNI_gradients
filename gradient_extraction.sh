@@ -4,6 +4,7 @@ subj_list="/path/to/subject_IDs.txt"
 subj_dir="/path/to/subjects/data"
 output_dir="/path/to/output/directory"
 
+
 pip3 install -r requirements.txt
 
 while read subj; do
@@ -27,4 +28,4 @@ while read subj; do
 
 done < ${subj_list}
 
-python3 align_gradients.py ${subj_list} ${output_dir} && echo "$(date +"%D %T") - alignment done"
+python3 align_gradients.py ${subj_list} ${output_dir} && echo -e "\n$(date +"%D %T") - alignment done"
