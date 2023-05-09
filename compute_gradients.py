@@ -24,4 +24,4 @@ M = prep_matrix(M)
 gradients, results = compute_diffusion_map(M, alpha = 0.5, n_components=10, return_result=True)
 
 np.save(f"{output_dir}/{subj}.DM_Gradients", gradients)
-np.save(f"{output_dir}/{subj}.DM_Lambdas", results.lambdas)
+np.save(f"{output_dir}/{subj}.DM_Lambdas", results['lambdas'])
