@@ -1,11 +1,10 @@
 #!/bin/bash
 
 subj=$1
-subj_dir="$2/${subj}"
-n=$3
+anat_dir="$2/${subj}/MNINonLinear/fsaverage_LR32k"
+func_dir="$3/${subj}/MNINonLinear/Results"
+n=$4
 
-func_dir="${subj_dir}/fmriresults01/${subj}_V1_MR/MNINonLinear/Results"
-struct_dir="${subj_dir}/fmriresults01/${subj}_V1_MR/MNINonLinear/fsaverage_LR32k"
 runs=(REST${n})
 
 
@@ -18,8 +17,8 @@ for tseries in ${runs[@]}; do
     if [ -f "${smooth}" ]; then continue; fi
 
     wb_command  -cifti-smoothing "${raw}" ${kernel} ${kernel} COLUMN "${smooth}" \
-                -left-surface ${struct_dir}/${subj}_V1_MR.L.midthickness_MSMAll.32k_fs_LR.surf.gii \
-                -right-surface ${struct_dir}/${subj}_V1_MR.R.midthickness_MSMAll.32k_fs_LR.surf.gii
+                -left-surface ${anat_dir}/${subj}.L.midthickness_MSMAll.32k_fs_LR.surf.gii \
+                -right-surface ${anat_dir}/${subj}.R.midthickness_MSMAll.32k_fs_LR.surf.gii
 done
 
 

@@ -13,13 +13,13 @@ while read subj; do
     echo -e "\n$(date +"%D %T") - ${subj}"
 
 
-    if [ ! -f "${subj_dir}/${subj}/fmriresults01/${subj}_V1_MR/MNINonLinear/Results/rfMRI_REST${run}_Atlas_MSMAll_hp0_clean_smooth.dtseries.nii" ]; then 
+    if [ ! -f "${subj_dir}/${subj}/fmriresults01/${subj}/MNINonLinear/Results/rfMRI_REST${run}_Atlas_MSMAll_hp0_clean_smooth.dtseries.nii" ]; then 
         ./additional_preprocessing.sh ${subj} ${subj_dir} && echo "$(date +"%D %T") - smoothing done"
     fi
 
 
     if [ ! -f "${output_dir}/${subj}.fcMatrix.rfMRI_REST${run}_Atlas_MSMAll_hp0_clean.npy" ]; then
-        python3 adjacency_matrix.py "${subj_dir}/${subj}/fmriresults01/${subj}_V1_MR/MNINonLinear/Results/rfMRI_REST${run}_Atlas_MSMAll_hp0_clean_smooth.dtseries.nii" \
+        python3 adjacency_matrix.py "${subj_dir}/${subj}/fmriresults01/${subj}/MNINonLinear/Results/rfMRI_REST${run}_Atlas_MSMAll_hp0_clean_smooth.dtseries.nii" \
                                     "${output_dir}/${subj}.fcMatrix.rfMRI_REST${run}_Atlas_MSMAll_hp0_clean" && echo "$(date +"%D %T") - adjacency matrix computed"
     fi
 
