@@ -1,5 +1,5 @@
-
 git+https://github.com/satra/mapalign.git
+hcp-utils==0.1.0
 numpy==1.21.5
 brainspace==0.1.10
 scikit-learn==1.1.3
